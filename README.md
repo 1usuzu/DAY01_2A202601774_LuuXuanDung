@@ -1,4 +1,4 @@
-# K4 — Ngày 1: Khám Phá LLM API (9h00–13h00)
+# K4 — Ngày 1: Khám Phá LLM API (14h00–18h00)
 
 Xem hướng dẫn step-by-step ở website: https://codelabs.vlearn.dev/codelab/day1-lab-llm-api-foundation 
 Đăng nhập bằng tài khoản vlearn đã được kích hoạt:
@@ -69,13 +69,13 @@ commit hoặc chia sẻ API key**.
 
 | Giờ | Hoạt động | Checkpoint |
 |-----|-----------|------------|
-| 9h00–9h20 | Mở đầu + setup môi trường | **CP0:** `pytest tests/ -v` chạy được (tests fail là đúng — bạn chưa code) |
-| 9h20–10h10 | **Block 1** — API cơ bản: Task 1.1, 1.2, 1.3 | **CP1 (10h10):** `pytest tests/test_part1.py -v` |
-| 10h10–11h00 | **Block 2** — System prompt & token: Task 2.1, 2.2, 2.3 | **CP2 (11h00):** `pytest tests/test_part2.py -v` |
-| 11h00–11h10 | ☕ Giải lao | — |
-| 11h10–12h00 | **Block 3** — Streaming & retry: Task 3.1, 3.2 | **CP3 (12h00):** `pytest tests/test_part3.py -v` |
-| 12h00–12h50 | **Block 4** — Mini-project: `run_assistant` | **CP4 (12h50):** `pytest tests/test_part4.py -v` |
-| 12h50–13h00 | Wrap-up: hoàn thiện `exercises.md`, chấm điểm, nộp bài | `python grade.py` |
+| 14h00–14h20 | Mở đầu + setup môi trường | **CP0:** `pytest tests/ -v` chạy được (tests fail là đúng — bạn chưa code) |
+| 14h20–15h10 | **Block 1** — API cơ bản: Task 1.1, 1.2, 1.3 | **CP1 (15h10):** `pytest tests/test_part1.py -v` |
+| 15h10–16h00 | **Block 2** — System prompt & token: Task 2.1, 2.2, 2.3 | **CP2 (16h00):** `pytest tests/test_part2.py -v` |
+| 16h00–16h10 | ☕ Giải lao | — |
+| 16h10–17h00 | **Block 3** — Streaming & retry: Task 3.1, 3.2 | **CP3 (17h00):** `pytest tests/test_part3.py -v` |
+| 17h00–17h50 | **Block 4** — Mini-project: `run_assistant` | **CP4 (17h50):** `pytest tests/test_part4.py -v` |
+| 17h50–18h00 | Wrap-up: hoàn thiện `exercises.md`, chấm điểm, nộp bài | `python grade.py` |
 
 Chi tiết từng bước của mỗi block: xem [LAB_GUIDE.md](LAB_GUIDE.md).
 

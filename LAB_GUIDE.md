@@ -1,5 +1,5 @@
 # LAB GUIDE — K4 Ngày 1: Khám Phá LLM API
-## Hướng dẫn chi tiết từng bước | 9h00–13h00
+## Hướng dẫn chi tiết từng bước | 14h00–18h00
 
 Tài liệu này dắt bạn qua từng bước của buổi lab. Mỗi block kết thúc bằng một
 **CHECKPOINT** có mốc giờ — nếu đến giờ mà bạn chưa xong, đọc mục
@@ -16,7 +16,7 @@ Toàn bộ code viết trong `template.py`. Toàn bộ test chạy bằng mock �
 
 ---
 
-# 🕘 9h00–9h20 · Mở Đầu & Setup
+# 🕘 14h00–14h20 · Mở Đầu & Setup
 
 Giảng viên giới thiệu tổng quan (10'). Song song, bạn setup môi trường:
 
@@ -58,7 +58,7 @@ Key chỉ cần cho phần **chạy thật** (demo, exercises); pytest không c�
 pytest tests/ -v
 ```
 
-### ✅ CHECKPOINT 0 (9h20)
+### ✅ CHECKPOINT 0 (14h20)
 Lệnh trên phải **chạy được và báo fail hàng loạt** với thông báo
 `NotImplementedError` — đó là dấu hiệu môi trường đã đúng, chỉ còn thiếu code
 của bạn. Nếu gặp `ModuleNotFoundError: No module named 'openai'` → môi trường
@@ -66,7 +66,7 @@ của bạn. Nếu gặp `ModuleNotFoundError: No module named 'openai'` → mô
 
 ---
 
-# 🕘 9h20–10h10 · BLOCK 1: API Cơ Bản
+# 🕘 14h20–15h10 · BLOCK 1: API Cơ Bản
 
 ### Mục tiêu
 - Gọi Chat Completions API, đo độ trễ
@@ -159,7 +159,7 @@ cost = (len(gpt4o_text.split()) / 0.75) / 1000 \
 `mini_answer`, `gpt4o_time`, `mini_time`, `gpt4o_cost`).
 Tên key phải khớp từng ký tự — test so sánh chính xác.
 
-### ✅ CHECKPOINT 1 (10h10)
+### ✅ CHECKPOINT 1 (15h10)
 ```bash
 pytest tests/test_part1.py -v
 ```
@@ -182,7 +182,7 @@ phụ thuộc Task 1.3.
 
 ---
 
-# 🕘 10h10–11h00 · BLOCK 2: System Prompt & Token
+# 🕘 15h10–16h00 · BLOCK 2: System Prompt & Token
 
 ### Mục tiêu
 - Dùng message role `system` để định persona cho model
@@ -260,7 +260,7 @@ completion_cost = completion_tokens / 1000 * pricing["output"]
 **Bước 3.** Trả dict 5 key: `prompt_tokens`, `completion_tokens`, `prompt_cost`,
 `completion_cost`, `total_cost` (= input + output).
 
-### ✅ CHECKPOINT 2 (11h00)
+### ✅ CHECKPOINT 2 (16h00)
 ```bash
 pytest tests/test_part2.py -v
 ```
@@ -281,13 +281,13 @@ chưa có tiktoken) — vẫn pass phần lớn test — rồi hoàn thiện sau
 
 ---
 
-# ☕ 11h00–11h10 · GIẢI LAO
+# ☕ 16h00–16h10 · GIẢI LAO
 
 Đứng dậy, rời màn hình. Block 3 cần não tươi.
 
 ---
 
-# 🕘 11h10–12h00 · BLOCK 3: Streaming & Độ Bền
+# 🕘 16h10–17h00 · BLOCK 3: Streaming & Độ Bền
 
 ### Mục tiêu
 - Stream phản hồi token-by-token cho UX tức thời
@@ -362,7 +362,7 @@ for attempt in range(max_retries + 1):
 Lưu ý `raise` trần (không tham số) giữ nguyên exception gốc — người gọi biết
 chính xác lỗi gì.
 
-### ✅ CHECKPOINT 3 (12h00)
+### ✅ CHECKPOINT 3 (17h00)
 ```bash
 pytest tests/test_part3.py -v
 ```
@@ -379,7 +379,7 @@ vì mini-project dùng lại đúng kỹ thuật đó.
 
 ---
 
-# 🕘 12h00–12h50 · BLOCK 4: MINI-PROJECT — Trợ Lý CLI Hoàn Chỉnh
+# 🕘 17h00–17h50 · BLOCK 4: MINI-PROJECT — Trợ Lý CLI Hoàn Chỉnh
 
 ### Mục tiêu
 Ghép **tất cả** những gì đã xây thành một hàm `run_assistant`: persona qua
@@ -459,7 +459,7 @@ python template.py                     # demo thật (cần API key)
 Nhóm test `Scenario` chính là "demo tự động": nó giả lập một cuộc hội thoại
 nhiều lượt và kiểm tra stats, history, stream — đây là 15 điểm demo của bạn.
 
-### ✅ CHECKPOINT 4 (12h50)
+### ✅ CHECKPOINT 4 (17h50)
 ```bash
 pytest tests/test_part4.py -v
 ```
@@ -472,7 +472,7 @@ thêm sau để lấy nhóm Scenario.
 
 ---
 
-# 🕘 12h50–13h00 · WRAP-UP & NỘP BÀI
+# 🕘 17h50–18h00 · WRAP-UP & NỘP BÀI
 
 **Bước 1.** Rà lại `exercises.md` — đủ 9 câu chưa?
 
