@@ -69,12 +69,12 @@ commit hoặc chia sẻ API key**.
 
 | Giờ | Hoạt động | Checkpoint |
 |-----|-----------|------------|
-| 14h00–14h20 | Mở đầu + setup môi trường | **CP0:** `pytest tests/ -v` chạy được (tests fail là đúng — bạn chưa code) |
-| 14h20–15h10 | **Block 1** — API cơ bản: Task 1.1, 1.2, 1.3 | **CP1 (15h10):** `pytest tests/test_part1.py -v` |
-| 15h10–16h00 | **Block 2** — System prompt & token: Task 2.1, 2.2, 2.3 | **CP2 (16h00):** `pytest tests/test_part2.py -v` |
-| 16h00–16h10 | ☕ Giải lao | — |
-| 16h10–17h00 | **Block 3** — Streaming & retry: Task 3.1, 3.2 | **CP3 (17h00):** `pytest tests/test_part3.py -v` |
-| 17h00–17h50 | **Block 4** — Mini-project: `run_assistant` | **CP4 (17h50):** `pytest tests/test_part4.py -v` |
+| 14h00–15h00 | Mở đầu + setup môi trường | **CP0:** `pytest tests/ -v` chạy được (tests fail là đúng — bạn chưa code) |
+| 15h00–15h40 | **Block 1** — API cơ bản: Task 1.1, 1.2, 1.3 | **CP1 (15h40):** `pytest tests/test_part1.py -v` |
+| 15h40–16h20 | **Block 2** — System prompt & token: Task 2.1, 2.2, 2.3 | **CP2 (16h20):** `pytest tests/test_part2.py -v` |
+| 16h20–16h30 | ☕ Giải lao | — |
+| 16h30–17h10 | **Block 3** — Streaming & retry: Task 3.1, 3.2 | **CP3 (17h10):** `pytest tests/test_part3.py -v` |
+| 17h10–17h50 | **Block 4** — Mini-project: `run_assistant` | **CP4 (17h50):** `pytest tests/test_part4.py -v` |
 | 17h50–18h00 | Wrap-up: hoàn thiện `exercises.md`, chấm điểm, nộp bài | `python grade.py` |
 
 Chi tiết từng bước của mỗi block: xem [LAB_GUIDE.md](LAB_GUIDE.md).
