@@ -137,6 +137,11 @@ python grade.py
 Điểm exercises là điểm hoàn thành; chất lượng nội dung giảng viên có thể
 điều chỉnh sau.
 
+**Chấm điểm không phụ thuộc luồng bạn dùng** — OpenAI (luồng chính) hay
+Gemini (luồng thay thế) đều được chấm bằng cùng một bộ test mock, điểm
+giống hệt nhau. `grade.py` in ra luồng đang cấu hình trong `.env` của bạn
+ở đầu bảng điểm để đối chiếu.
+
 ---
 
 ## Hướng Dẫn Nộp Bài — Link GitHub trên vlearn

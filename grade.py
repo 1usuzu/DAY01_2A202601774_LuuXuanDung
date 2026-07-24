@@ -15,12 +15,35 @@ Cách tính điểm (tổng 100):
 nếu không sẽ chấm template.py và exercises.md ở thư mục gốc.
 """
 
+import os
 import sys
 from pathlib import Path
 
 import pytest
 
 DAY_DIR = Path(__file__).parent
+
+
+def detect_flow() -> tuple[str, str, str]:
+    """
+    Đọc .env (nếu có) và cho biết luồng chạy thật đang cấu hình.
+    Chỉ để hiển thị — điểm số KHÔNG phụ thuộc luồng vì mọi test đều mock.
+    """
+    try:
+        from dotenv import load_dotenv
+        load_dotenv(DAY_DIR / ".env")
+    except ImportError:
+        pass
+    base_url = os.getenv("OPENAI_BASE_URL", "")
+    model = os.getenv("LAB_MODEL", "gpt-4o")
+    mini = os.getenv("LAB_MINI_MODEL", "gpt-4o-mini")
+    if "googleapis" in base_url:
+        provider = "Google Gemini (luồng thay thế)"
+    elif "nvidia" in base_url:
+        provider = "NVIDIA NIM (lựa chọn khác)"
+    else:
+        provider = "OpenAI (luồng chính)"
+    return provider, model, mini
 
 # (tên tiêu chí, args pytest, điểm tối đa)
 TEST_GROUPS = [
@@ -32,7 +55,9 @@ TEST_GROUPS = [
 ]
 
 EXERCISES_POINTS = 25
-PLACEHOLDER = "*Câu trả lời của bạn*"
+# Đếm theo cả dòng blockquote để không dính dòng hướng dẫn ở đầu file
+# (dòng đó nhắc đến placeholder trong backtick nhưng không phải câu trả lời)
+PLACEHOLDER = "> *Câu trả lời của bạn*"
 TOTAL_QUESTIONS = 9  # số câu hỏi trong exercises.md gốc
 
 
@@ -84,6 +109,11 @@ def main() -> int:
     print("=" * 70)
     print("CHẤM ĐIỂM TỰ ĐỘNG — K4 Ngày 1: Khám Phá LLM API")
     print("=" * 70)
+    provider, model, mini = detect_flow()
+    print(f"Luồng chạy thật đang cấu hình: {provider}")
+    print(f"  Model lớn: {model}  |  Model nhỏ: {mini}")
+    print("  Điểm số KHÔNG phụ thuộc luồng — cả OpenAI lẫn Gemini được chấm")
+    print("  bằng cùng một bộ test mock.")
 
     rows = []
 
