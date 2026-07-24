@@ -28,8 +28,8 @@ load_dotenv()
 PRICING_PER_1K_TOKENS = {
     "gpt-4o": {"input": 0.0025, "output": 0.010},
     "gpt-4o-mini": {"input": 0.00015, "output": 0.0006},
-    "gemini-2.5-flash": {"input": 0.0003, "output": 0.0025},
-    "gemini-2.5-flash-lite": {"input": 0.0001, "output": 0.0004},
+    "gemini-3.5-flash": {"input": 0.0003, "output": 0.0025},
+    "gemini-3.5-flash-lite": {"input": 0.0001, "output": 0.0004},
 }
 
 # Luồng chính: OpenAI (mặc định, không cần đặt gì trong .env).
