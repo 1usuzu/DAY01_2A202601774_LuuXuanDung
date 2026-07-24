@@ -96,4 +96,4 @@ cách khắc phục (ví dụ: tóm tắt các lượt cũ, tăng giới hạn c
 - [ ] `python grade.py` — xem điểm tự động, mục tiêu ≥ 75/100
 - [ ] Cả 4 checkpoint pytest đều pass
 - [ ] Tất cả 9 câu trong file này đã được trả lời
-- [ ] Đã copy bài làm vào folder `solution/` và zip theo hướng dẫn README
+- [ ] Đã copy bài làm vào folder `solution/`, push lên GitHub cá nhân và nộp link repo vào vlearn (theo hướng dẫn README)

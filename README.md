@@ -136,7 +136,10 @@ python grade.py
 
 ---
 
-## Hướng Dẫn Nộp Bài
+## Hướng Dẫn Nộp Bài — Link GitHub trên vlearn
+
+K4 **không nộp file zip** — bạn push bài làm lên GitHub cá nhân và nộp link
+repo vào vlearn.
 
 ```bash
 # 1. Tạo folder solution và copy bài làm
@@ -147,18 +150,29 @@ cp exercises.md solution/exercises.md
 # 2. Chấm thử lần cuối (grade.py sẽ ưu tiên chấm folder solution)
 python grade.py
 
-# 3. Zip folder solution
-zip -r solution.zip solution/
+# 3. Tạo repo MỚI trên github.com (tên: <mã sinh viên>-lab-1), rồi push:
+git init                          # bỏ qua nếu folder đã là git repo
+git add .
+git commit -m "Nộp bài lab 1"
+git branch -M main
+git remote add origin https://github.com/<tài khoản của bạn>/<mã sinh viên>-lab-1.git
+git push -u origin main
 
-# 4. Đổi tên thành <mã sinh viên>_lab_1.zip và upload lên LMS
+# 4. Nộp LINK repo (https://github.com/<tài khoản>/<mã sinh viên>-lab-1) vào vlearn
 ```
 
-**Cấu trúc folder solution trước khi zip:**
+**Cấu trúc repo khi nộp:**
 ```
-solution/
-├── solution.py      # template.py đã hoàn thiện
-└── exercises.md     # 9 câu đã trả lời
+<mã sinh viên>-lab-1/
+├── solution/
+│   ├── solution.py      # template.py đã hoàn thiện
+│   └── exercises.md     # 9 câu đã trả lời
+├── template.py, tests/, grade.py, ...   # giữ nguyên từ repo lab
 ```
+
+⚠️ **Kiểm tra sau khi push:** mở repo trên GitHub, xác nhận **không thấy file
+`.env`** (đã có `.gitignore` chặn, nhưng hãy tự kiểm tra — lộ key là mất tiền
+thật). Repo để Public, hoặc Private và mời tài khoản GitHub của giảng viên.
 
 ---
 
@@ -168,4 +182,5 @@ solution/
 - [ ] `python grade.py` — xem điểm, mục tiêu ≥ 75/100
 - [ ] `solution/exercises.md` — cả 9 câu đã trả lời
 - [ ] `solution/solution.py` — bản code cuối cùng
-- [ ] Đã zip và đổi tên đúng quy định trước khi upload LMS
+- [ ] Đã push lên GitHub, repo KHÔNG chứa file `.env`
+- [ ] Đã nộp link repo vào vlearn trước 18h00

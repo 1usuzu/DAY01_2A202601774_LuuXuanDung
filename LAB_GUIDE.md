@@ -482,8 +482,10 @@ python grade.py
 ```
 Đọc bảng điểm — mục nào chưa tối đa thì biết chính xác cần sửa gì.
 
-**Bước 3.** Đóng gói và nộp theo [README.md](README.md#hướng-dẫn-nộp-bài):
-copy vào `solution/`, zip, đổi tên `<mã sinh viên>_lab_1.zip`, upload LMS.
+**Bước 3.** Nộp bài theo [README.md](README.md#hướng-dẫn-nộp-bài--link-github-trên-vlearn):
+copy bài vào `solution/`, push toàn bộ lên repo GitHub cá nhân
+(`<mã sinh viên>-lab-1`), rồi **nộp link repo vào vlearn**. Nhớ kiểm tra
+trên GitHub không thấy file `.env`.
 
 ---
 
