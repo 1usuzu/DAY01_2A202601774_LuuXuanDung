@@ -24,10 +24,13 @@ mỗi block có checkpoint theo giờ để bạn tự biết mình đang đúng
 
 ### Yêu cầu
 - Python 3.10+
-- API key để chạy thủ công (toàn bộ kiểm thử dùng mock, không cần key) — một trong hai:
-  - **OpenAI API key**, hoặc
-  - **NVIDIA NIM key — miễn phí**, đăng ký ~5 phút tại [build.nvidia.com](https://build.nvidia.com):
-    xem hướng dẫn từng bước ở [LAB_GUIDE.md — Phụ lục B](LAB_GUIDE.md#phụ-lục-b--lấy-api-key-miễn-phí-từ-nvidia-nim)
+- API key để chạy thủ công (toàn bộ kiểm thử dùng mock, không cần key):
+  - **Luồng chính — OpenAI API key**: so sánh GPT-4o vs GPT-4o-mini như đề bài gốc
+  - **Luồng thay thế — Google Gemini (miễn phí)**, dùng khi không có key OpenAI:
+    lấy key ~2 phút tại [aistudio.google.com/apikey](https://aistudio.google.com/apikey),
+    so sánh cặp `gemini-2.5-flash` vs `gemini-2.5-flash-lite` —
+    xem [LAB_GUIDE.md — Phụ lục B](LAB_GUIDE.md#phụ-lục-b--luồng-thay-thế-google-gemini-khi-không-có-key-openai)
+  - (Lựa chọn khác: NVIDIA NIM miễn phí — [Phụ lục C](LAB_GUIDE.md#phụ-lục-c--lựa-chọn-khác-nvidia-nim-miễn-phí))
 
 ### Tạo môi trường ảo & cài thư viện
 

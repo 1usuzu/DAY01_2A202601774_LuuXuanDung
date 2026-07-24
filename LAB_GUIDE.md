@@ -49,9 +49,10 @@ Mở file `.env` vừa tạo, thay `sk-your-key-here` bằng key thật. `templa
 Key chỉ cần cho phần **chạy thật** (demo, exercises); pytest không cần key.
 `.env` đã nằm trong `.gitignore` — không bao giờ commit key.
 
-> 🆓 **Không có key OpenAI?** Lấy key **miễn phí** từ NVIDIA NIM theo
-> [Phụ lục B](#phụ-lục-b--lấy-api-key-miễn-phí-từ-nvidia-nim) — chỉ mất
-> ~5 phút đăng ký, không cần thẻ tín dụng, và không phải sửa dòng code nào.
+> 🆓 **Không có key OpenAI?** Dùng **luồng thay thế Google Gemini** (miễn
+> phí, ~2 phút đăng ký) theo [Phụ lục B](#phụ-lục-b--luồng-thay-thế-google-gemini-khi-không-có-key-openai)
+> — không phải sửa dòng code nào, chỉ đổi file `.env`. Ngoài ra còn
+> lựa chọn NVIDIA NIM ở [Phụ lục C](#phụ-lục-c--lựa-chọn-khác-nvidia-nim-miễn-phí).
 
 **Bước 3.** Chạy thử bộ test:
 ```bash
@@ -503,12 +504,67 @@ trên GitHub không thấy file `.env`.
 
 ---
 
-## Phụ Lục B — Lấy API Key MIỄN PHÍ từ NVIDIA NIM
+## Phụ Lục B — Luồng Thay Thế: Google Gemini (khi không có key OpenAI)
+
+**Luồng chính** của lab dùng OpenAI (so sánh GPT-4o vs GPT-4o-mini). Nếu bạn
+không có key OpenAI, **luồng thay thế chính thức là Google Gemini** — bậc
+miễn phí của Google AI Studio đủ cho cả buổi. Gemini có endpoint **tương
+thích chuẩn OpenAI** nên code **không phải sửa dòng nào**: OpenAI SDK tự đọc
+`OPENAI_BASE_URL` từ `.env`, còn tên model đọc qua `LAB_MODEL` /
+`LAB_MINI_MODEL`.
+
+### Bước 1 — Lấy API key (miễn phí, ~2 phút)
+
+1. Mở [aistudio.google.com/apikey](https://aistudio.google.com/apikey),
+   đăng nhập bằng tài khoản Google
+2. Bấm **Create API key** (chọn project mặc định là được)
+3. Copy key dạng `AIza...` — **lưu ngay**
+
+### Bước 2 — Cấu hình `.env`
+
+Mở `.env` và thay bằng (mẫu có sẵn trong `.env.example`):
+
+```bash
+OPENAI_API_KEY=AIza-key-cua-ban
+OPENAI_BASE_URL=https://generativelanguage.googleapis.com/v1beta/openai/
+LAB_MODEL=gemini-2.5-flash
+LAB_MINI_MODEL=gemini-2.5-flash-lite
+```
+
+Cặp model trên thay vai GPT-4o (model lớn) và GPT-4o-mini (model nhỏ):
+`gemini-2.5-flash` mạnh hơn và đắt hơn, `flash-lite` nhanh và rẻ — bài so
+sánh model lớn vs nhỏ của Block 1 giữ nguyên giá trị. Bảng giá trong
+`template.py` đã có sẵn giá hai model Gemini này, nên `estimate_cost`
+(Task 2.3) tính đúng chi phí thật.
+
+### Bước 3 — Kiểm tra key hoạt động
+
+```bash
+python -c "
+from template import call_openai
+text, latency = call_openai('Chào bạn, hãy trả lời bằng 1 câu tiếng Việt.')
+print(f'[{latency:.2f}s] {text}')
+"
+```
+
+Thấy câu trả lời tiếng Việt in ra là xong — làm tiếp lab như bình thường.
+
+### Lưu ý khi dùng Gemini
+
+- **pytest và `python grade.py` không cần key** — mọi test đều mock, điểm
+  số không phụ thuộc bạn dùng OpenAI hay Gemini.
+- `count_tokens`: tiktoken không có bảng mã cho Gemini → tự rơi về ước
+  lượng `len(text) // 4` (đúng thiết kế fallback ở Task 2.2).
+- Bậc miễn phí giới hạn số lượt gọi mỗi phút — nếu gặp lỗi 429, đó chính
+  là lúc `retry_with_backoff` của Task 3.2 tỏa sáng.
+
+---
+
+## Phụ Lục C — Lựa Chọn Khác: NVIDIA NIM (miễn phí)
 
 NVIDIA NIM cung cấp endpoint **tương thích chuẩn OpenAI** với hàng nghìn
-lượt gọi miễn phí — đủ dư cho cả buổi lab. Code của bạn **không phải sửa
-dòng nào**: OpenAI SDK tự đọc `OPENAI_BASE_URL` từ `.env`, còn tên model
-đã được `template.py` đọc qua biến `LAB_MODEL` / `LAB_MINI_MODEL`.
+lượt gọi miễn phí — đủ dư cho cả buổi lab. Cách hoạt động giống hệt luồng
+Gemini ở Phụ lục B: chỉ đổi `.env`, không sửa code.
 
 ### Bước 1 — Đăng ký tài khoản (miễn phí, không cần thẻ)
 

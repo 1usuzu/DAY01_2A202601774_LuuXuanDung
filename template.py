@@ -27,10 +27,13 @@ load_dotenv()
 PRICING_PER_1K_TOKENS = {
     "gpt-4o": {"input": 0.0025, "output": 0.010},
     "gpt-4o-mini": {"input": 0.00015, "output": 0.0006},
+    "gemini-2.5-flash": {"input": 0.0003, "output": 0.0025},
+    "gemini-2.5-flash-lite": {"input": 0.0001, "output": 0.0004},
 }
 
-# Tên model có thể đổi qua .env — ví dụ khi dùng NVIDIA NIM miễn phí
-# (xem LAB_GUIDE.md, Phụ lục B). Không đặt gì trong .env thì mặc định OpenAI.
+# Luồng chính: OpenAI (mặc định, không cần đặt gì trong .env).
+# Không có key OpenAI? Dùng luồng thay thế Google Gemini (Phụ lục B
+# trong LAB_GUIDE.md) — tên model đổi qua .env. NVIDIA NIM: Phụ lục C.
 OPENAI_MODEL = os.getenv("LAB_MODEL", "gpt-4o")
 OPENAI_MINI_MODEL = os.getenv("LAB_MINI_MODEL", "gpt-4o-mini")
 
@@ -110,9 +113,13 @@ def compare_models(prompt: str) -> dict:
             - "gpt4o_cost": float  (USD ước tính cho phản hồi)
 
     Gợi ý:
-        cost = (len(response.split()) / 0.75) / 1000 \\
-               * PRICING_PER_1K_TOKENS["gpt-4o"]["output"]
-        (0.75 từ ≈ 1 token — ước lượng thô; Part 2 sẽ tính chính xác hơn)
+        pricing = PRICING_PER_1K_TOKENS.get(
+            OPENAI_MODEL, PRICING_PER_1K_TOKENS["gpt-4o"]
+        )
+        cost = (len(response.split()) / 0.75) / 1000 * pricing["output"]
+        (0.75 từ ≈ 1 token — ước lượng thô; Part 2 sẽ tính chính xác hơn.
+         Dùng .get để lấy đúng giá model đang chạy — gpt-4o, gemini...;
+         model không có trong bảng thì lấy giá gpt-4o làm tham chiếu)
     """
     # TODO: gọi call_openai và call_openai_mini, ghép dict kết quả
     raise NotImplementedError("Implement compare_models")
